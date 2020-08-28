@@ -13,7 +13,16 @@ import retrofit2.Call
 /**
  * @author Steve Soltys
  */
-class AppleMusic(private val configuration: AppleMusicConfiguration) {
+class AppleMusic(
+    private val teamId: String,
+    private val privateKey: ByteArray,
+    private val keyId: String,
+    private val storefront: String
+) {
+
+    private val configuration: AppleMusicConfiguration by lazy {
+        AppleMusicConfiguration(teamId, privateKey, keyId, storefront)
+    }
 
     private var currentToken: AppleMusicAuthToken? = null
 
