@@ -7,5 +7,5 @@ import com.stevesoltys.applemusic.model.ResponseRoot
  */
 class AlbumResponse : ResponseRoot() {
 
-    var data: Array<Album>? = null
+    lateinit var data: Array<Album>
 }

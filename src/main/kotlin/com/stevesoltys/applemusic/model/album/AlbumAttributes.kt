@@ -20,9 +20,11 @@ class AlbumAttributes {
 
     var genreNames: Array<String>? = null
 
-    var isComplete: Boolean? = null
+    @JsonProperty("isComplete")
+    var complete: Boolean? = null
 
-    var isSingle: Boolean? = null
+    @JsonProperty("isSingle")
+    var single: Boolean? = null
 
     var name: String? = null
 
@@ -36,5 +38,6 @@ class AlbumAttributes {
 
     var url: String? = null
 
-    var isMasteredForItunes: Boolean? = null
+    @JsonProperty("isMasteredForItunes")
+    var masteredForItunes: Boolean? = null
 }
