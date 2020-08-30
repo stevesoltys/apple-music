@@ -83,7 +83,6 @@ class AppleMusic(
             call(appleMusicService.getAlbumsByArtistId(id, offset.toString(), limit))
 
         val result = currentResponse.data.toCollection(ArrayList())
-        result.addAll(currentResponse.data)
 
         while (currentResponse.next != null) {
             offset += currentResponse.data.size
