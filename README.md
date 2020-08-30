@@ -1,5 +1,5 @@
 # Apple Music
-[![Build Status](https://travis-ci.com/stevesoltys/applemusic.svg?branch=master)](https://travis-ci.org/stevesoltys/applemusic)
+[![Build Status](https://travis-ci.org/stevesoltys/apple-music.svg?branch=master)](https://travis-ci.org/github/stevesoltys/apple-music)
 
 An [Apple Music API](https://developer.apple.com/documentation/applemusicapi/) wrapper.
 
