@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.stevesoltys:applemusic:0.1.0'
+    compile 'com.github.stevesoltys:apple-music:0.1.0'
 }
 ```
 
