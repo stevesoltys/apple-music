@@ -1,6 +1,7 @@
 package com.stevesoltys.applemusic.model.album
 
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.stevesoltys.applemusic.model.Artwork
 
 /**
  * @author Steve Soltys
@@ -19,6 +20,8 @@ class AlbumAttributes {
     var copyright: String? = null
 
     var genreNames: Array<String>? = null
+
+    var artwork: Artwork? = null
 
     @JsonProperty("isComplete")
     var complete: Boolean? = null
