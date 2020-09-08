@@ -24,11 +24,15 @@ class AppleMusic(
         AppleMusicConfiguration(teamId, privateKey, keyId, storefront)
     }
 
+    private val retrofitBuilder: AppleMusicRetrofitBuilder by lazy {
+        AppleMusicRetrofitBuilder()
+    }
+
     private var currentToken: AppleMusicAuthToken? = null
 
     private val appleMusicService: AppleMusicService
         get() {
-            return AppleMusicRetrofitBuilder()
+            return retrofitBuilder
                 .build(configuration, token().toString())
                 .create(AppleMusicService::class.java)
         }
