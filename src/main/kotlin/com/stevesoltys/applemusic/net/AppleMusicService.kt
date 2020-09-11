@@ -3,6 +3,7 @@ package com.stevesoltys.applemusic.net
 import com.stevesoltys.applemusic.model.album.AlbumResponse
 import com.stevesoltys.applemusic.model.artist.ArtistResponse
 import com.stevesoltys.applemusic.model.search.SearchResponse
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

@@ -1,6 +1,7 @@
 package com.stevesoltys.applemusic
 
 import com.stevesoltys.applemusic.model.album.AlbumResponse
+import com.stevesoltys.applemusic.model.artist.ArtistResponse
 import com.stevesoltys.applemusic.model.search.SearchResponse
 import com.stevesoltys.applemusic.model.search.SearchResultType
 import com.stevesoltys.applemusic.net.AppleMusicHttpException
@@ -66,6 +67,13 @@ class AppleMusic(
     }
 
     /**
+     * Get an artist.
+     */
+    fun getArtistById(id: String): ArtistResponse {
+        return call(appleMusicService.getArtistById(id))
+    }
+
+    /**
      * Get albums for a given artist.
      */
     fun getAlbumsByArtistId(
@@ -77,7 +85,7 @@ class AppleMusic(
     }
 
     /**
-     * Fetch all albums for a given artist.
+     * Get all albums for a given artist.
      */
     fun getAllAlbumsByArtistId(id: String): AlbumResponse {
         val limit = 100
