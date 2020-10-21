@@ -1,11 +1,13 @@
 package com.stevesoltys.applemusic.model.artist
 
+import com.stevesoltys.applemusic.model.EditorialNotes
+
 /**
  * @author Steve Soltys
  */
 class ArtistAttributes {
 
-    // TODO: Editorial notes
+    var editorialNotes: EditorialNotes? = null
 
     var genreNames: Array<String>? = null
 

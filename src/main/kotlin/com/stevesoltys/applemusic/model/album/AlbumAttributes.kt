@@ -2,13 +2,14 @@ package com.stevesoltys.applemusic.model.album
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.stevesoltys.applemusic.model.Artwork
+import com.stevesoltys.applemusic.model.EditorialNotes
 
 /**
  * @author Steve Soltys
  */
 class AlbumAttributes {
 
-    // TODO: Editorial notes
+    var editorialNotes: EditorialNotes? = null
 
     @JsonProperty("albumName")
     var musicVideoAlbumName: String? = null
