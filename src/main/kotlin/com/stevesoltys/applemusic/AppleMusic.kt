@@ -74,6 +74,13 @@ class AppleMusic(
     }
 
     /**
+     * Get an album.
+     */
+    fun getAlbumById(id: String): AlbumResponse {
+        return call(appleMusicService.getAlbumById(id))
+    }
+
+    /**
      * Get albums for a given artist.
      */
     fun getAlbumsByArtistId(
