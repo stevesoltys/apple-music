@@ -17,7 +17,8 @@ import com.stevesoltys.applemusic.model.track.song.Song
 @JsonSubTypes(
     value = [
         JsonSubTypes.Type(value = Song::class, name = "songs"),
-        JsonSubTypes.Type(value = MusicVideo::class, name = "musicVideos")
+        JsonSubTypes.Type(value = MusicVideo::class, name = "musicVideos"),
+        JsonSubTypes.Type(value = MusicVideo::class, name = "music-videos")
     ]
 )
 abstract class Track : Resource()
