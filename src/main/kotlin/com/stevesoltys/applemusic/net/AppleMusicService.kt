@@ -3,7 +3,6 @@ package com.stevesoltys.applemusic.net
 import com.stevesoltys.applemusic.model.album.AlbumResponse
 import com.stevesoltys.applemusic.model.artist.ArtistResponse
 import com.stevesoltys.applemusic.model.search.SearchResponse
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -23,13 +22,19 @@ interface AppleMusicService {
     ): Call<SearchResponse>
 
     @GET("artists/{id}")
-    fun getArtistById(@Path("id") id: String): Call<ArtistResponse>
+    fun getArtistById(
+        @Path("id") id: String,
+        @Query("include") types: Array<String>? = null
+    ): Call<ArtistResponse>
 
     @GET("artists")
     fun getArtistsById(@Query("ids") ids: Array<String>): Call<ArtistResponse>
 
     @GET("albums/{id}")
-    fun getAlbumById(@Path("id") id: String): Call<AlbumResponse>
+    fun getAlbumById(
+        @Path("id") id: String,
+        @Query("include") types: Array<String>? = null
+    ): Call<AlbumResponse>
 
     @GET("albums")
     fun getAlbumsById(@Query("ids") ids: Array<String>): Call<AlbumResponse>

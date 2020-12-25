@@ -69,15 +69,21 @@ class AppleMusic(
     /**
      * Get an artist.
      */
-    fun getArtistById(id: String): ArtistResponse {
-        return call(appleMusicService.getArtistById(id))
+    fun getArtistById(
+        id: String,
+        include: Set<String>? = null
+    ): ArtistResponse {
+        return call(appleMusicService.getArtistById(id, include?.toTypedArray()))
     }
 
     /**
      * Get an album.
      */
-    fun getAlbumById(id: String): AlbumResponse {
-        return call(appleMusicService.getAlbumById(id))
+    fun getAlbumById(
+        id: String,
+        include: Set<String>? = null
+    ): AlbumResponse {
+        return call(appleMusicService.getAlbumById(id, include?.toTypedArray()))
     }
 
     /**
