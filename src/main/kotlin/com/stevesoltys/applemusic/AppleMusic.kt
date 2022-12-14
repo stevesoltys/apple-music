@@ -2,6 +2,9 @@ package com.stevesoltys.applemusic
 
 import com.stevesoltys.applemusic.model.album.AlbumResponse
 import com.stevesoltys.applemusic.model.artist.ArtistResponse
+import com.stevesoltys.applemusic.model.chart.ChartResponse
+import com.stevesoltys.applemusic.model.chart.ChartResultType
+import com.stevesoltys.applemusic.model.chart.ChartType
 import com.stevesoltys.applemusic.model.search.SearchResponse
 import com.stevesoltys.applemusic.model.search.SearchResultType
 import com.stevesoltys.applemusic.net.AppleMusicHttpException
@@ -67,6 +70,31 @@ class AppleMusic(
     }
 
     /**
+     * Get catalog charts.
+     */
+    fun getCatalogCharts(
+        types: Set<ChartResultType>,
+        localization: String? = null,
+        chart: String? = null,
+        offset: String? = null,
+        limit: Int? = null,
+        genre: String? = null,
+        with: Set<ChartType>? = null
+    ): ChartResponse {
+        return call(
+            appleMusicService.getCatalogCharts(
+                types = types.map { it.identifier }.toTypedArray(),
+                localization = localization,
+                chart = chart,
+                offset = offset,
+                limit = limit,
+                genre = genre,
+                with = with?.map { it.identifier }?.toTypedArray()
+            )
+        )
+    }
+
+    /**
      * Get an artist.
      */
     fun getArtistById(
@@ -104,23 +132,17 @@ class AppleMusic(
         val limit = 100
         var offset = 0
 
-        var currentResponse =
-            call(appleMusicService.getAlbumsByArtistId(id, offset.toString(), limit))
-
+        var currentResponse = call(appleMusicService.getAlbumsByArtistId(id, 0.toString(), limit))
         val result = currentResponse.data.toCollection(ArrayList())
 
         while (currentResponse.next != null) {
             offset += currentResponse.data.size
 
-            currentResponse =
-                call(appleMusicService.getAlbumsByArtistId(id, offset.toString(), limit))
-
+            currentResponse = call(appleMusicService.getAlbumsByArtistId(id, offset.toString(), limit))
             result.addAll(currentResponse.data)
         }
 
-        val response = AlbumResponse()
-        response.data = result.toTypedArray()
-        return response
+        return AlbumResponse(result.toTypedArray())
     }
 
     private fun <T> call(call: Call<T>): T {
