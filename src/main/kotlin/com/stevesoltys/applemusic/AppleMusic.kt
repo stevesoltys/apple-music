@@ -115,6 +115,15 @@ class AppleMusic(
     }
 
     /**
+     * Get a set of albums by their identifiers.
+     */
+    fun getAlbumsById(
+        ids: Array<String>
+    ): AlbumResponse {
+        return call(appleMusicService.getAlbumsById(ids))
+    }
+
+    /**
      * Get albums for a given artist.
      */
     fun getAlbumsByArtistId(

@@ -29,6 +29,8 @@ class AppleMusicE2ETest {
 
         private const val TEST_ALBUM_IDENTIFIER = "259814641"
         private const val TEST_ALBUM_NAME = "An Innocent Man"
+
+        private const val TEST_ALBUM_IDENTIFIER_2 = "1440903530"
     }
 
     private lateinit var appleMusic: AppleMusic
@@ -65,11 +67,24 @@ class AppleMusicE2ETest {
     }
 
     @Test
-    fun `can get artist albums by identifier`() {
+    fun `can get a single album by identifier`() {
         val result = appleMusic.getAllAlbumsByArtistId(TEST_ARTIST_IDENTIFIER)
 
         val albums = result.data
         albums.shouldNotBeNull().shouldNotBeEmpty()
+    }
+
+    @Test
+    fun `can get multiple albums by their identifiers`() {
+        val result = appleMusic.getAlbumsById(
+            arrayOf(TEST_ALBUM_IDENTIFIER, TEST_ALBUM_IDENTIFIER_2)
+        )
+
+        val albums = result.data
+        albums.shouldNotBeNull().shouldNotBeEmpty()
+
+        albums.first().attributes?.artistName.shouldNotBeNull()
+        albums.first().relationships?.artists?.data.shouldNotBeNull().shouldHaveSize(1)
     }
 
     @Test
