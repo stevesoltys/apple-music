@@ -5,7 +5,6 @@ import com.stevesoltys.applemusic.model.ResponseRoot
 /**
  * @author Steve Soltys
  */
-class AlbumResponse : ResponseRoot() {
-
-    lateinit var data: Array<Album>
-}
+open class AlbumResponse(
+    val data: Array<Album> = emptyArray()
+) : ResponseRoot()
