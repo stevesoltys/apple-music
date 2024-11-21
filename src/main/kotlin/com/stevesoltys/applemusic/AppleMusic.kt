@@ -5,11 +5,13 @@ import com.stevesoltys.applemusic.model.artist.ArtistResponse
 import com.stevesoltys.applemusic.model.chart.ChartResponse
 import com.stevesoltys.applemusic.model.chart.ChartResultType
 import com.stevesoltys.applemusic.model.chart.ChartType
+import com.stevesoltys.applemusic.model.libraryartist.LibraryArtistResponse
 import com.stevesoltys.applemusic.model.search.SearchResponse
 import com.stevesoltys.applemusic.model.search.SearchResultType
 import com.stevesoltys.applemusic.net.AppleMusicHttpException
 import com.stevesoltys.applemusic.net.AppleMusicRetrofitBuilder
 import com.stevesoltys.applemusic.net.AppleMusicService
+import com.stevesoltys.applemusic.net.DefaultAppleMusicRetrofitBuilder
 import com.stevesoltys.applemusic.security.AppleMusicAuthToken
 import com.stevesoltys.applemusic.security.AppleMusicTokenGenerator
 import retrofit2.Call
@@ -21,22 +23,23 @@ class AppleMusic(
   private val teamId: String,
   private val privateKey: ByteArray,
   private val keyId: String,
-  private val storefront: String
+  private val storefront: String,
+  private val retrofitBuilder: AppleMusicRetrofitBuilder? = null
 ) {
 
   private val configuration: AppleMusicConfiguration by lazy {
     AppleMusicConfiguration(teamId, privateKey, keyId, storefront)
   }
 
-  private val retrofitBuilder: AppleMusicRetrofitBuilder by lazy {
-    AppleMusicRetrofitBuilder()
+  private val retrofit: AppleMusicRetrofitBuilder by lazy {
+    retrofitBuilder ?: DefaultAppleMusicRetrofitBuilder()
   }
 
   private var currentToken: AppleMusicAuthToken? = null
 
   private val appleMusicService: AppleMusicService
     get() {
-      return retrofitBuilder
+      return retrofit
         .build(configuration, token().toString())
         .create(AppleMusicService::class.java)
     }
@@ -152,6 +155,16 @@ class AppleMusic(
     }
 
     return AlbumResponse(result.toTypedArray())
+  }
+
+  /**
+   * Get all artists from a user's library.
+   */
+  fun getLibraryArtists(
+    userToken: String
+  ): LibraryArtistResponse {
+
+    return call(appleMusicService.getLibraryArtists(userToken))
   }
 
   private fun <T> call(call: Call<T>): T {

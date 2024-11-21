@@ -109,16 +109,16 @@ class AppleMusicE2ETest {
         result.results.songs.shouldBeEmpty()
     }
 
-    @Test
-    fun `can get top 100 song charts`() {
-        val result = appleMusic.getCatalogCharts(
-            types = setOf(ChartResultType.SONGS),
-            with = setOf(ChartType.DAILY_GLOBAL_TOP_CHARTS),
-            limit = 100
-        )
+  @Test
+  fun `can get top 100 song charts`() {
+    val result = appleMusic.getCatalogCharts(
+      types = setOf(ChartResultType.SONGS),
+      with = setOf(ChartType.DAILY_GLOBAL_TOP_CHARTS),
+      limit = 100
+    )
 
-        result.results.songs.shouldNotBeEmpty()
-        result.results.songs.first().data.shouldHaveSize(100)
-        result.results.albums.shouldBeEmpty()
-    }
+    result.results.songs.shouldNotBeEmpty()
+    result.results.songs.first().data.shouldHaveSize(100)
+    result.results.albums.shouldBeEmpty()
+  }
 }

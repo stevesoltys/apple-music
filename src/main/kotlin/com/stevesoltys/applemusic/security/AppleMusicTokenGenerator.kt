@@ -13,9 +13,10 @@ import java.util.Date
  */
 class AppleMusicTokenGenerator(private val configuration: AppleMusicConfiguration) {
 
-  fun generate(): AppleMusicAuthToken {
-    val issueDate = Date()
-    val expiryDate = Date.from(Date().toInstant().plus(15777000, ChronoUnit.SECONDS))
+  fun generate(
+    issueDate: Date = Date(),
+    expiryDate: Date = Date.from(issueDate.toInstant().plus(15777000, ChronoUnit.SECONDS))
+  ): AppleMusicAuthToken {
 
     val token = Jwts.builder()
       .setIssuer(configuration.teamId)

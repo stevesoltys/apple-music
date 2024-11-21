@@ -1,7 +1,6 @@
 package com.stevesoltys.applemusic.model.chart
 
 import com.stevesoltys.applemusic.model.album.AlbumChartResponse
-import com.stevesoltys.applemusic.model.artist.ArtistResponse
 import com.stevesoltys.applemusic.model.track.song.SongChartResponse
 
 /**
