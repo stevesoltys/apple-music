@@ -12,8 +12,7 @@ class AppleMusicObjectMapper : ObjectMapper() {
     configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
 
     registerModule(
-      KotlinModule.Builder()
-        .build()
+      KotlinModule.Builder().build()
     )
   }
 }

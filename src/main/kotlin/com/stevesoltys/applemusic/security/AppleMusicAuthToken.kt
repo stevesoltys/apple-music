@@ -6,7 +6,7 @@ import java.util.Date
  * @author Steve Soltys
  */
 class AppleMusicAuthToken(
-  private val expiryDate: Date,
+  val expiryDate: Date,
   val token: String
 ) {
 

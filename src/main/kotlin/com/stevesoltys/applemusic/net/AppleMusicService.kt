@@ -3,9 +3,11 @@ package com.stevesoltys.applemusic.net
 import com.stevesoltys.applemusic.model.album.AlbumResponse
 import com.stevesoltys.applemusic.model.artist.ArtistResponse
 import com.stevesoltys.applemusic.model.chart.ChartResponse
+import com.stevesoltys.applemusic.model.libraryartist.LibraryArtistResponse
 import com.stevesoltys.applemusic.model.search.SearchResponse
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -61,4 +63,14 @@ interface AppleMusicService {
     @Query("offset") offset: String? = null,
     @Query("limit") limit: Int? = null
   ): Call<AlbumResponse>
+
+  @GET("me/library/artists")
+  fun getLibraryArtists(
+    @Header("Music-User-Token") userToken: String,
+    @Query("include") include: Array<String>? = null,
+    @Query("l") localization: String? = null,
+    @Query("limit") limit: Int? = null,
+    @Query("offset") offset: String? = null,
+    @Query("extend") extend: Array<String>? = null
+  ): Call<LibraryArtistResponse>
 }
