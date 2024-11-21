@@ -7,7 +7,7 @@ import com.stevesoltys.applemusic.model.Resource
  */
 class Album : Resource() {
 
-    var relationships: AlbumRelationships? = null
+  var relationships: AlbumRelationships? = null
 
-    var attributes: AlbumAttributes? = null
+  var attributes: AlbumAttributes? = null
 }

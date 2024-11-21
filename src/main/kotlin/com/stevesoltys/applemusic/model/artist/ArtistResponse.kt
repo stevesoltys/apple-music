@@ -7,5 +7,5 @@ import com.stevesoltys.applemusic.model.ResponseRoot
  */
 class ArtistResponse : ResponseRoot() {
 
-    lateinit var data: Array<Artist>
+  lateinit var data: Array<Artist>
 }

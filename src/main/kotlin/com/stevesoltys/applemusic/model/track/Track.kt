@@ -10,15 +10,15 @@ import com.stevesoltys.applemusic.model.track.song.Song
  * @author Steve Soltys
  */
 @JsonTypeInfo(
-    use = JsonTypeInfo.Id.NAME,
-    include = JsonTypeInfo.As.EXISTING_PROPERTY,
-    property = "type"
+  use = JsonTypeInfo.Id.NAME,
+  include = JsonTypeInfo.As.EXISTING_PROPERTY,
+  property = "type"
 )
 @JsonSubTypes(
-    value = [
-        JsonSubTypes.Type(value = Song::class, name = "songs"),
-        JsonSubTypes.Type(value = MusicVideo::class, name = "musicVideos"),
-        JsonSubTypes.Type(value = MusicVideo::class, name = "music-videos")
-    ]
+  value = [
+    JsonSubTypes.Type(value = Song::class, name = "songs"),
+    JsonSubTypes.Type(value = MusicVideo::class, name = "musicVideos"),
+    JsonSubTypes.Type(value = MusicVideo::class, name = "music-videos")
+  ]
 )
 abstract class Track : Resource()

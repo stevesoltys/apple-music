@@ -13,25 +13,25 @@ import java.util.Date
  */
 class AppleMusicTokenGenerator(private val configuration: AppleMusicConfiguration) {
 
-    fun generate(): AppleMusicAuthToken {
-        val issueDate = Date()
-        val expiryDate = Date.from(Date().toInstant().plus(15777000, ChronoUnit.SECONDS))
+  fun generate(): AppleMusicAuthToken {
+    val issueDate = Date()
+    val expiryDate = Date.from(Date().toInstant().plus(15777000, ChronoUnit.SECONDS))
 
-        val token = Jwts.builder()
-            .setIssuer(configuration.teamId)
-            .setIssuedAt(issueDate)
-            .setExpiration(expiryDate)
-            .setHeaderParam("kid", configuration.keyId)
-            .signWith(
-                KeyFactory.getInstance("EC")
-                    .generatePrivate(PKCS8EncodedKeySpec(configuration.privateKey)),
-                SignatureAlgorithm.ES256
-            )
-            .compact()
+    val token = Jwts.builder()
+      .setIssuer(configuration.teamId)
+      .setIssuedAt(issueDate)
+      .setExpiration(expiryDate)
+      .setHeaderParam("kid", configuration.keyId)
+      .signWith(
+        KeyFactory.getInstance("EC")
+          .generatePrivate(PKCS8EncodedKeySpec(configuration.privateKey)),
+        SignatureAlgorithm.ES256
+      )
+      .compact()
 
-        return AppleMusicAuthToken(
-            expiryDate = expiryDate,
-            token = token
-        )
-    }
+    return AppleMusicAuthToken(
+      expiryDate = expiryDate,
+      token = token
+    )
+  }
 }

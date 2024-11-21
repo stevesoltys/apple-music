@@ -5,7 +5,7 @@ package com.stevesoltys.applemusic.model
  */
 class EditorialNotes {
 
-    var short: String? = null
+  var short: String? = null
 
-    var standard: String? = null
+  var standard: String? = null
 }

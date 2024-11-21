@@ -5,5 +5,5 @@ package com.stevesoltys.applemusic.model
  */
 open class Relationship {
 
-    var href: String? = null
+  var href: String? = null
 }

@@ -5,9 +5,9 @@ package com.stevesoltys.applemusic.model
  */
 open class Resource {
 
-    var href: String? = null
+  var href: String? = null
 
-    var id: String? = null
+  var id: String? = null
 
-    var type: String? = null
+  var type: String? = null
 }

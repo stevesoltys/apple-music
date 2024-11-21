@@ -8,6 +8,6 @@ import com.stevesoltys.applemusic.model.track.song.SongChartResponse
  * @author Steve Soltys
  */
 class ChartResults(
-    val albums: Array<AlbumChartResponse> = emptyArray(),
-    val songs: Array<SongChartResponse> = emptyArray()
+  val albums: Array<AlbumChartResponse> = emptyArray(),
+  val songs: Array<SongChartResponse> = emptyArray()
 )

@@ -7,5 +7,5 @@ import com.stevesoltys.applemusic.model.Relationship
  */
 class TrackRelationship : Relationship() {
 
-    var data: Array<Track>? = null
+  var data: Array<Track>? = null
 }

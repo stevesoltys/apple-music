@@ -7,11 +7,11 @@ import com.stevesoltys.applemusic.model.EditorialNotes
  */
 class ArtistAttributes {
 
-    var editorialNotes: EditorialNotes? = null
+  var editorialNotes: EditorialNotes? = null
 
-    var genreNames: Array<String>? = null
+  var genreNames: Array<String>? = null
 
-    var name: String? = null
+  var name: String? = null
 
-    var url: String? = null
+  var url: String? = null
 }

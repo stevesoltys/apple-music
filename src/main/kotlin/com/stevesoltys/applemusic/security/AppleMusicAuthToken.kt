@@ -6,15 +6,15 @@ import java.util.Date
  * @author Steve Soltys
  */
 class AppleMusicAuthToken(
-    private val expiryDate: Date,
-    val token: String
+  private val expiryDate: Date,
+  val token: String
 ) {
 
-    fun isExpired(): Boolean {
-        return Date().toInstant().isAfter(expiryDate.toInstant())
-    }
+  fun isExpired(): Boolean {
+    return Date().toInstant().isAfter(expiryDate.toInstant())
+  }
 
-    override fun toString(): String {
-        return token
-    }
+  override fun toString(): String {
+    return token
+  }
 }

@@ -8,7 +8,7 @@ import com.stevesoltys.applemusic.model.artist.ArtistResponse
  */
 class SearchResults {
 
-    var albums: AlbumResponse? = null
+  var albums: AlbumResponse? = null
 
-    var artists: ArtistResponse? = null
+  var artists: ArtistResponse? = null
 }

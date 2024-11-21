@@ -5,11 +5,11 @@ package com.stevesoltys.applemusic
  */
 class AppleMusicConfiguration(
 
-    val teamId: String,
+  val teamId: String,
 
-    val privateKey: ByteArray,
+  val privateKey: ByteArray,
 
-    val keyId: String,
+  val keyId: String,
 
-    val storefront: String
+  val storefront: String
 )

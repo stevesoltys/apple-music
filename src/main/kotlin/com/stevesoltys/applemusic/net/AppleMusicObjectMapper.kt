@@ -8,12 +8,12 @@ import com.fasterxml.jackson.module.kotlin.KotlinModule
  * @author Steve Soltys
  */
 class AppleMusicObjectMapper : ObjectMapper() {
-    init {
-        configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+  init {
+    configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
 
-        registerModule(
-            KotlinModule.Builder()
-                .build()
-        )
-    }
+    registerModule(
+      KotlinModule.Builder()
+        .build()
+    )
+  }
 }

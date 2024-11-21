@@ -8,7 +8,7 @@ import com.stevesoltys.applemusic.model.track.TrackRelationship
  */
 class AlbumRelationships {
 
-    var artists: ArtistRelationship? = null
+  var artists: ArtistRelationship? = null
 
-    val tracks: TrackRelationship? = null
+  val tracks: TrackRelationship? = null
 }

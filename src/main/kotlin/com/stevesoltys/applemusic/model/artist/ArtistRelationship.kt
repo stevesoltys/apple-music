@@ -7,5 +7,5 @@ import com.stevesoltys.applemusic.model.Relationship
  */
 class ArtistRelationship : Relationship() {
 
-    var data: Array<Artist>? = null
+  var data: Array<Artist>? = null
 }

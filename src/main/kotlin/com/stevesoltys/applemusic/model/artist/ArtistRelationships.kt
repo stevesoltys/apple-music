@@ -7,5 +7,5 @@ import com.stevesoltys.applemusic.model.album.AlbumRelationship
  */
 class ArtistRelationships {
 
-    var albums: AlbumRelationship? = null
+  var albums: AlbumRelationship? = null
 }

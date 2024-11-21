@@ -7,5 +7,5 @@ import com.stevesoltys.applemusic.model.ResponseRoot
  */
 class SearchResponse : ResponseRoot() {
 
-    var results: SearchResults? = null
+  var results: SearchResults? = null
 }

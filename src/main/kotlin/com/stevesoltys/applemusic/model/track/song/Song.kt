@@ -7,7 +7,7 @@ import com.stevesoltys.applemusic.model.track.Track
  */
 class Song : Track() {
 
-    var relationships: SongRelationships? = null
+  var relationships: SongRelationships? = null
 
-    var attributes: SongAttributes? = null
+  var attributes: SongAttributes? = null
 }

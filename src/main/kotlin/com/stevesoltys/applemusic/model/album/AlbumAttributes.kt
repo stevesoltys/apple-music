@@ -9,39 +9,39 @@ import com.stevesoltys.applemusic.model.EditorialNotes
  */
 class AlbumAttributes {
 
-    var editorialNotes: EditorialNotes? = null
+  var editorialNotes: EditorialNotes? = null
 
-    @JsonProperty("albumName")
-    var musicVideoAlbumName: String? = null
+  @JsonProperty("albumName")
+  var musicVideoAlbumName: String? = null
 
-    var artistName: String? = null
+  var artistName: String? = null
 
-    var contentRating: String? = null
+  var contentRating: String? = null
 
-    var copyright: String? = null
+  var copyright: String? = null
 
-    var genreNames: Array<String>? = null
+  var genreNames: Array<String>? = null
 
-    var artwork: Artwork? = null
+  var artwork: Artwork? = null
 
-    @JsonProperty("isComplete")
-    var complete: Boolean? = null
+  @JsonProperty("isComplete")
+  var complete: Boolean? = null
 
-    @JsonProperty("isSingle")
-    var single: Boolean? = null
+  @JsonProperty("isSingle")
+  var single: Boolean? = null
 
-    var name: String? = null
+  var name: String? = null
 
-    // TODO: Play params
+  // TODO: Play params
 
-    var recordLabel: String? = null
+  var recordLabel: String? = null
 
-    var releaseDate: String? = null
+  var releaseDate: String? = null
 
-    var trackCount: Int? = null
+  var trackCount: Int? = null
 
-    var url: String? = null
+  var url: String? = null
 
-    @JsonProperty("isMasteredForItunes")
-    var masteredForItunes: Boolean? = null
+  @JsonProperty("isMasteredForItunes")
+  var masteredForItunes: Boolean? = null
 }

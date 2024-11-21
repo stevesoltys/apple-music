@@ -5,7 +5,7 @@ package com.stevesoltys.applemusic.model
  */
 open class ResponseRoot {
 
-    var href: String? = null
+  var href: String? = null
 
-    var next: String? = null
+  var next: String? = null
 }

@@ -6,7 +6,7 @@ import retrofit2.Response
  * @author Steve Soltys
  */
 class AppleMusicHttpException(val response: Response<*>) :
-    RuntimeException(
-        "Error during Apple Music HTTP call: " +
-            "${response.message()} (${response.code()})"
-    )
+  RuntimeException(
+    "Error during Apple Music HTTP call: " +
+      "${response.message()} (${response.code()})"
+  )
