@@ -8,5 +8,5 @@ class AppleMusicConfiguration(
   val privateKey: ByteArray,
   val keyId: String,
   val storefront: String,
-  val baseUrl: String = "https://api.music.apple.com/v1/catalog/${storefront}/"
+  val baseUrl: String = "https://api.music.apple.com/v1/"
 )

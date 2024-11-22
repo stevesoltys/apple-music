@@ -20,16 +20,9 @@ import retrofit2.Call
  * @author Steve Soltys
  */
 class AppleMusic(
-  private val teamId: String,
-  private val privateKey: ByteArray,
-  private val keyId: String,
-  private val storefront: String,
+  private val configuration: AppleMusicConfiguration,
   private val retrofitBuilder: AppleMusicRetrofitBuilder? = null
 ) {
-
-  private val configuration: AppleMusicConfiguration by lazy {
-    AppleMusicConfiguration(teamId, privateKey, keyId, storefront)
-  }
 
   private val retrofit: AppleMusicRetrofitBuilder by lazy {
     retrofitBuilder ?: DefaultAppleMusicRetrofitBuilder()
@@ -64,10 +57,11 @@ class AppleMusic(
   ): SearchResponse {
     return call(
       appleMusicService.search(
-        term,
-        offset,
-        limit,
-        types?.map { it.identifier }?.toTypedArray()
+        storefront = configuration.storefront,
+        term = term,
+        offset = offset,
+        limit = limit,
+        types = types?.map { it.identifier }?.toTypedArray()
       )
     )
   }
@@ -86,6 +80,7 @@ class AppleMusic(
   ): ChartResponse {
     return call(
       appleMusicService.getCatalogCharts(
+        storefront = configuration.storefront,
         types = types.map { it.identifier }.toTypedArray(),
         localization = localization,
         chart = chart,
@@ -104,7 +99,13 @@ class AppleMusic(
     id: String,
     include: Set<String>? = null
   ): ArtistResponse {
-    return call(appleMusicService.getArtistById(id, include?.toTypedArray()))
+    return call(
+      appleMusicService.getArtistById(
+        storefront = configuration.storefront,
+        id = id,
+        types = include?.toTypedArray()
+      )
+    )
   }
 
   /**
@@ -114,7 +115,13 @@ class AppleMusic(
     id: String,
     include: Set<String>? = null
   ): AlbumResponse {
-    return call(appleMusicService.getAlbumById(id, include?.toTypedArray()))
+    return call(
+      appleMusicService.getAlbumById(
+        storefront = configuration.storefront,
+        id = id,
+        types = include?.toTypedArray()
+      )
+    )
   }
 
   /**
@@ -123,7 +130,12 @@ class AppleMusic(
   fun getAlbumsById(
     ids: Array<String>
   ): AlbumResponse {
-    return call(appleMusicService.getAlbumsById(ids))
+    return call(
+      appleMusicService.getAlbumsById(
+        storefront = configuration.storefront,
+        ids = ids
+      )
+    )
   }
 
   /**
@@ -134,7 +146,14 @@ class AppleMusic(
     offset: String? = null,
     limit: Int? = null
   ): AlbumResponse {
-    return call(appleMusicService.getAlbumsByArtistId(id, offset, limit))
+    return call(
+      appleMusicService.getAlbumsByArtistId(
+        storefront = configuration.storefront,
+        id = id,
+        offset = offset,
+        limit = limit
+      )
+    )
   }
 
   /**
@@ -144,13 +163,26 @@ class AppleMusic(
     val limit = 100
     var offset = 0
 
-    var currentResponse = call(appleMusicService.getAlbumsByArtistId(id, 0.toString(), limit))
+    var currentResponse = call(
+      appleMusicService.getAlbumsByArtistId(
+        storefront = configuration.storefront,
+        id = id,
+        offset = 0.toString(),
+        limit = limit
+      )
+    )
+
     val result = currentResponse.data.toCollection(ArrayList())
 
     while (currentResponse.next != null) {
       offset += currentResponse.data.size
 
-      currentResponse = call(appleMusicService.getAlbumsByArtistId(id, offset.toString(), limit))
+      currentResponse = getAlbumsByArtistId(
+        id = id,
+        offset = offset.toString(),
+        limit = limit
+      )
+
       result.addAll(currentResponse.data)
     }
 

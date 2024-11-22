@@ -16,16 +16,18 @@ import retrofit2.http.Query
  */
 interface AppleMusicService {
 
-  @GET("search")
+  @GET("catalog/{storefront}/search")
   fun search(
+    @Path("storefront") storefront: String,
     @Query("term") term: String,
     @Query("offset") offset: String? = null,
     @Query("limit") limit: Int? = null,
     @Query("include") types: Array<String>? = null
   ): Call<SearchResponse>
 
-  @GET("charts")
+  @GET("catalog/{storefront}/charts")
   fun getCatalogCharts(
+    @Path("storefront") storefront: String,
     @Query("types") types: Array<String>,
     @Query("l") localization: String? = null,
     @Query("chart") chart: String? = null,
@@ -35,30 +37,35 @@ interface AppleMusicService {
     @Query("with") with: Array<String>? = null
   ): Call<ChartResponse>
 
-  @GET("artists/{id}")
+  @GET("catalog/{storefront}/artists/{id}")
   fun getArtistById(
+    @Path("storefront") storefront: String,
     @Path("id") id: String,
     @Query("include") types: Array<String>? = null
   ): Call<ArtistResponse>
 
-  @GET("artists")
+  @GET("catalog/{storefront}/artists")
   fun getArtistsById(
+    @Path("storefront") storefront: String,
     @Query("ids") ids: Array<String>
   ): Call<ArtistResponse>
 
-  @GET("albums/{id}")
+  @GET("catalog/{storefront}/albums/{id}")
   fun getAlbumById(
+    @Path("storefront") storefront: String,
     @Path("id") id: String,
     @Query("include") types: Array<String>? = null
   ): Call<AlbumResponse>
 
-  @GET("albums")
+  @GET("catalog/{storefront}/albums")
   fun getAlbumsById(
+    @Path("storefront") storefront: String,
     @Query("ids") ids: Array<String>
   ): Call<AlbumResponse>
 
-  @GET("artists/{id}/albums")
+  @GET("catalog/{storefront}/artists/{id}/albums")
   fun getAlbumsByArtistId(
+    @Path("storefront") storefront: String,
     @Path("id") id: String,
     @Query("offset") offset: String? = null,
     @Query("limit") limit: Int? = null
