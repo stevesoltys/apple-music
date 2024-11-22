@@ -161,10 +161,24 @@ class AppleMusic(
    * Get all artists from a user's library.
    */
   fun getLibraryArtists(
-    userToken: String
+    userToken: String,
+    include: Set<String>? = null,
+    localization: String? = null,
+    limit: Int? = null,
+    offset: String? = null,
+    extend: Set<String>? = null
   ): LibraryArtistResponse {
 
-    return call(appleMusicService.getLibraryArtists(userToken))
+    return call(
+      appleMusicService.getLibraryArtists(
+        userToken = userToken,
+        include = include?.toTypedArray(),
+        localization = localization,
+        limit = limit,
+        offset = offset,
+        extend = extend?.toTypedArray()
+      )
+    )
   }
 
   private fun <T> call(call: Call<T>): T {
