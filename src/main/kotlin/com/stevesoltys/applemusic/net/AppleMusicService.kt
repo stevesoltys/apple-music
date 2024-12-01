@@ -3,8 +3,10 @@ package com.stevesoltys.applemusic.net
 import com.stevesoltys.applemusic.model.album.AlbumResponse
 import com.stevesoltys.applemusic.model.artist.ArtistResponse
 import com.stevesoltys.applemusic.model.chart.ChartResponse
-import com.stevesoltys.applemusic.model.libraryartist.LibraryArtistResponse
+import com.stevesoltys.applemusic.model.album.library.LibraryAlbumResponse
+import com.stevesoltys.applemusic.model.artist.library.LibraryArtistResponse
 import com.stevesoltys.applemusic.model.search.SearchResponse
+import com.stevesoltys.applemusic.model.track.song.library.LibrarySongResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -80,4 +82,24 @@ interface AppleMusicService {
     @Query("offset") offset: String? = null,
     @Query("extend") extend: Array<String>? = null
   ): Call<LibraryArtistResponse>
+
+  @GET("me/library/albums")
+  fun getLibraryAlbums(
+    @Header("Music-User-Token") userToken: String,
+    @Query("include") include: Array<String>? = null,
+    @Query("l") localization: String? = null,
+    @Query("limit") limit: Int? = null,
+    @Query("offset") offset: String? = null,
+    @Query("extend") extend: Array<String>? = null
+  ): Call<LibraryAlbumResponse>
+
+  @GET("me/library/songs")
+  fun getLibrarySongs(
+    @Header("Music-User-Token") userToken: String,
+    @Query("include") include: Array<String>? = null,
+    @Query("l") localization: String? = null,
+    @Query("limit") limit: Int? = null,
+    @Query("offset") offset: String? = null,
+    @Query("extend") extend: Array<String>? = null
+  ): Call<LibrarySongResponse>
 }

@@ -1,4 +1,4 @@
-package com.stevesoltys.applemusic.model.libraryartist
+package com.stevesoltys.applemusic.model.artist.library
 
 /**
  * @author Steve Soltys

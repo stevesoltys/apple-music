@@ -5,9 +5,11 @@ import com.stevesoltys.applemusic.model.artist.ArtistResponse
 import com.stevesoltys.applemusic.model.chart.ChartResponse
 import com.stevesoltys.applemusic.model.chart.ChartResultType
 import com.stevesoltys.applemusic.model.chart.ChartType
-import com.stevesoltys.applemusic.model.libraryartist.LibraryArtistResponse
+import com.stevesoltys.applemusic.model.album.library.LibraryAlbumResponse
+import com.stevesoltys.applemusic.model.artist.library.LibraryArtistResponse
 import com.stevesoltys.applemusic.model.search.SearchResponse
 import com.stevesoltys.applemusic.model.search.SearchResultType
+import com.stevesoltys.applemusic.model.track.song.library.LibrarySongResponse
 import com.stevesoltys.applemusic.net.AppleMusicHttpException
 import com.stevesoltys.applemusic.net.AppleMusicRetrofitBuilder
 import com.stevesoltys.applemusic.net.AppleMusicService
@@ -203,6 +205,54 @@ class AppleMusic(
 
     return call(
       appleMusicService.getLibraryArtists(
+        userToken = userToken,
+        include = include?.toTypedArray(),
+        localization = localization,
+        limit = limit,
+        offset = offset,
+        extend = extend?.toTypedArray()
+      )
+    )
+  }
+
+  /**
+   * Get all albums from a user's library.
+   */
+  fun getLibraryAlbums(
+    userToken: String,
+    include: Set<String>? = null,
+    localization: String? = null,
+    limit: Int? = null,
+    offset: String? = null,
+    extend: Set<String>? = null
+  ): LibraryAlbumResponse {
+
+    return call(
+      appleMusicService.getLibraryAlbums(
+        userToken = userToken,
+        include = include?.toTypedArray(),
+        localization = localization,
+        limit = limit,
+        offset = offset,
+        extend = extend?.toTypedArray()
+      )
+    )
+  }
+
+  /**
+   * Get all songs from a user's library.
+   */
+  fun getLibrarySongs(
+    userToken: String,
+    include: Set<String>? = null,
+    localization: String? = null,
+    limit: Int? = null,
+    offset: String? = null,
+    extend: Set<String>? = null
+  ): LibrarySongResponse {
+
+    return call(
+      appleMusicService.getLibrarySongs(
         userToken = userToken,
         include = include?.toTypedArray(),
         localization = localization,
