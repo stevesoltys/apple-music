@@ -230,6 +230,28 @@ class AppleMusic(
   }
 
   /**
+   * Get library artists by id.
+   */
+  fun getLibraryArtistsById(
+    userToken: String,
+    ids: Array<String>,
+    localization: String? = null,
+    include: Set<String>? = null,
+    extend: Set<String>? = null
+  ): LibraryArtistResponse {
+
+    return call(
+      appleMusicService.getLibraryArtistsById(
+        userToken = userToken,
+        ids = ids,
+        localization = localization,
+        include = include?.toTypedArray(),
+        extend = extend?.toTypedArray()
+      )
+    )
+  }
+
+  /**
    * Get all albums from a user's library.
    */
   fun getLibraryAlbums(

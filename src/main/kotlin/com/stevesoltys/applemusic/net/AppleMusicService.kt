@@ -83,6 +83,14 @@ interface AppleMusicService {
     @Query("extend") extend: Array<String>? = null
   ): Call<LibraryArtistResponse>
 
+  fun getLibraryArtistsById(
+    @Header("Music-User-Token") userToken: String,
+    @Query("ids") ids: Array<String>,
+    @Query("l") localization: String? = null,
+    @Query("include") include: Array<String>? = null,
+    @Query("extend") extend: Array<String>? = null
+  ): Call<LibraryArtistResponse>
+
   @GET("me/library/albums")
   fun getLibraryAlbums(
     @Header("Music-User-Token") userToken: String,
