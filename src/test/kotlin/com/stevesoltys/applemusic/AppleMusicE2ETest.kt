@@ -27,6 +27,9 @@ class AppleMusicE2ETest {
     private const val TEST_ARTIST_IDENTIFIER = "485953"
     private const val TEST_ARTIST_NAME = "Billy Joel"
 
+    private const val TEST_ARTIST_IDENTIFIER_2 = "334854763"
+    private const val TEST_ARTIST_NAME_TWO = "Kesha"
+
     private const val TEST_ALBUM_IDENTIFIER = "259814641"
     private const val TEST_ALBUM_NAME = "An Innocent Man"
 
@@ -66,6 +69,16 @@ class AppleMusicE2ETest {
     val billyJoelAttributes = result.data.firstOrNull()?.attributes
     billyJoelAttributes.shouldNotBeNull()
     billyJoelAttributes.name shouldBe TEST_ARTIST_NAME
+  }
+
+  @Test
+  fun `can get multiple artists by artist identifier`() {
+    val result = appleMusic.getArtistsById(
+      arrayOf(TEST_ARTIST_IDENTIFIER, TEST_ARTIST_IDENTIFIER_2)
+    )
+
+    val artists = result.data
+    artists.shouldNotBeNull().shouldHaveSize(2)
   }
 
   @Test

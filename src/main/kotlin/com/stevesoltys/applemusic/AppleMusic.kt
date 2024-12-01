@@ -141,6 +141,20 @@ class AppleMusic(
   }
 
   /**
+   * Get a set of artists by their identifiers.
+   */
+  fun getArtistsById(
+    ids: Array<String>
+  ): ArtistResponse {
+    return call(
+      appleMusicService.getArtistsById(
+        storefront = configuration.storefront,
+        ids = ids
+      )
+    )
+  }
+
+  /**
    * Get albums for a given artist.
    */
   fun getAlbumsByArtistId(

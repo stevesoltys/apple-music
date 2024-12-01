@@ -5,7 +5,6 @@ import com.stevesoltys.applemusic.model.ResponseRoot
 /**
  * @author Steve Soltys
  */
-class ArtistResponse : ResponseRoot() {
-
-  lateinit var data: Array<Artist>
-}
+data class ArtistResponse(
+  val data: List<Artist>
+) : ResponseRoot()
