@@ -6,6 +6,7 @@ import com.stevesoltys.applemusic.model.chart.ChartResponse
 import com.stevesoltys.applemusic.model.album.library.LibraryAlbumResponse
 import com.stevesoltys.applemusic.model.artist.library.LibraryArtistResponse
 import com.stevesoltys.applemusic.model.search.SearchResponse
+import com.stevesoltys.applemusic.model.track.song.SongResponse
 import com.stevesoltys.applemusic.model.track.song.library.LibrarySongResponse
 import retrofit2.Call
 import retrofit2.http.GET
@@ -72,6 +73,25 @@ interface AppleMusicService {
     @Query("offset") offset: String? = null,
     @Query("limit") limit: Int? = null
   ): Call<AlbumResponse>
+
+  @GET("catalog/{storefront}/songs")
+  fun getSongsById(
+    @Path("storefront") storefront: String,
+    @Query("ids") ids: Array<String>? = null,
+    @Query("filter[isrc]") isrcIds: Array<String>? = null,
+    @Query("include") include: Array<String>? = null,
+    @Query("l") localization: String? = null,
+    @Query("extend") extend: Array<String>? = null
+  ): Call<SongResponse>
+
+  @GET("catalog/{storefront}/songs")
+  fun getSongsByIsrcId(
+    @Path("storefront") storefront: String,
+    @Query("ids") ids: Array<String>,
+    @Query("include") include: Array<String>? = null,
+    @Query("l") localization: String? = null,
+    @Query("extend") extend: Array<String>? = null
+  ): Call<SongResponse>
 
   @GET("me/library/artists")
   fun getLibraryArtists(

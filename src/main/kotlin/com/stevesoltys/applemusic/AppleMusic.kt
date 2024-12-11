@@ -9,6 +9,7 @@ import com.stevesoltys.applemusic.model.album.library.LibraryAlbumResponse
 import com.stevesoltys.applemusic.model.artist.library.LibraryArtistResponse
 import com.stevesoltys.applemusic.model.search.SearchResponse
 import com.stevesoltys.applemusic.model.search.SearchResultType
+import com.stevesoltys.applemusic.model.track.song.SongResponse
 import com.stevesoltys.applemusic.model.track.song.library.LibrarySongResponse
 import com.stevesoltys.applemusic.net.AppleMusicHttpException
 import com.stevesoltys.applemusic.net.AppleMusicRetrofitBuilder
@@ -168,6 +169,29 @@ class AppleMusic(
         id = id,
         offset = offset,
         limit = limit
+      )
+    )
+  }
+
+  /**
+   * Get a set of songs by their identifiers.
+   */
+  fun getSongsById(
+    ids: Array<String>? = null,
+    isrcIds: Array<String>? = null,
+    include: Array<String>? = null,
+    localization: String? = null,
+    extend: Array<String>? = null
+  ): SongResponse {
+
+    return call(
+      appleMusicService.getSongsById(
+        storefront = configuration.storefront,
+        ids = ids,
+        isrcIds = isrcIds,
+        include = include,
+        localization = localization,
+        extend = extend
       )
     )
   }

@@ -112,6 +112,15 @@ class AppleMusicE2ETest {
   }
 
   @Test
+  fun `can get songs by ISRC`() {
+    val result = appleMusic.getSongsById(
+      isrcIds = arrayOf("USQE92100257")
+    )
+
+    result.data.shouldNotBeNull().shouldHaveSize(1)
+  }
+
+  @Test
   fun `can get top 100 album charts`() {
     val result = appleMusic.getCatalogCharts(
       types = setOf(ChartResultType.ALBUMS),
