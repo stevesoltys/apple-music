@@ -7,7 +7,7 @@ import com.stevesoltys.applemusic.model.PlayParameters
  * @author Steve Soltys
  */
 data class LibraryAlbumAttributes(
-  val artistName: String,
+  val artistName: String? = null,
   val artwork: Artwork,
   val contentRating: String? = null,
   val dateAdded: String? = null,
