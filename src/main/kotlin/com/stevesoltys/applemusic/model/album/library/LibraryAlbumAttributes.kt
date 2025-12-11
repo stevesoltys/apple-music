@@ -8,7 +8,7 @@ import com.stevesoltys.applemusic.model.PlayParameters
  */
 data class LibraryAlbumAttributes(
   val artistName: String? = null,
-  val artwork: Artwork,
+  val artwork: Artwork? = null,
   val contentRating: String? = null,
   val dateAdded: String? = null,
   val name: String,
