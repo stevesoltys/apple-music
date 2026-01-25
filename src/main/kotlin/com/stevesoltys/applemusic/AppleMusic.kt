@@ -161,14 +161,16 @@ class AppleMusic(
   fun getAlbumsByArtistId(
     id: String,
     offset: String? = null,
-    limit: Int? = null
+    limit: Int? = null,
+    include: Set<String>? = null
   ): AlbumResponse {
     return call(
       appleMusicService.getAlbumsByArtistId(
         storefront = configuration.storefront,
         id = id,
         offset = offset,
-        limit = limit
+        limit = limit,
+        include = include?.toTypedArray()
       )
     )
   }
@@ -199,7 +201,10 @@ class AppleMusic(
   /**
    * Get all albums for a given artist.
    */
-  fun getAllAlbumsByArtistId(id: String): AlbumResponse {
+  fun getAllAlbumsByArtistId(
+    id: String,
+    include: Set<String>? = null
+  ): AlbumResponse {
     val limit = 100
     var offset = 0
 
@@ -208,7 +213,8 @@ class AppleMusic(
         storefront = configuration.storefront,
         id = id,
         offset = 0.toString(),
-        limit = limit
+        limit = limit,
+        include = include?.toTypedArray()
       )
     )
 
@@ -220,7 +226,8 @@ class AppleMusic(
       currentResponse = getAlbumsByArtistId(
         id = id,
         offset = offset.toString(),
-        limit = limit
+        limit = limit,
+        include = include
       )
 
       result.addAll(currentResponse.data)

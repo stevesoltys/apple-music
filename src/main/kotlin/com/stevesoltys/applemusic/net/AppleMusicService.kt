@@ -71,7 +71,8 @@ interface AppleMusicService {
     @Path("storefront") storefront: String,
     @Path("id") id: String,
     @Query("offset") offset: String? = null,
-    @Query("limit") limit: Int? = null
+    @Query("limit") limit: Int? = null,
+    @Query("include") include: Array<String>? = null
   ): Call<AlbumResponse>
 
   @GET("catalog/{storefront}/songs")

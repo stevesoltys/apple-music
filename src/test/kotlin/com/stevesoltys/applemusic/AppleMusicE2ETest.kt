@@ -90,6 +90,18 @@ class AppleMusicE2ETest {
   }
 
   @Test
+  fun `can get all albums by artist identifier with include`() {
+    val result = appleMusic.getAllAlbumsByArtistId(
+      id = TEST_ARTIST_IDENTIFIER,
+      include = setOf("artists")
+    )
+
+    val albums = result.data
+    albums.shouldNotBeEmpty()
+    albums.first().relationships?.artists?.data.shouldNotBeEmpty()
+  }
+
+  @Test
   fun `can get multiple albums by their identifiers`() {
     val result = appleMusic.getAlbumsById(
       arrayOf(TEST_ALBUM_IDENTIFIER, TEST_ALBUM_IDENTIFIER_2)
